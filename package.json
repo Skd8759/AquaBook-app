@@ -19,11 +19,21 @@
     "type": "git",
     "url": "git+https://github.com/chahat885/B-D-App.git"
   },
-  "keywords": ["swimming", "pool", "booking", "nitk", "react", "nodejs"],
+  "keywords": [
+    "swimming",
+    "pool",
+    "booking",
+    "nitk",
+    "react",
+    "nodejs"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/chahat885/B-D-App/issues"
   },
-  "homepage": "https://github.com/chahat885/B-D-App#readme"
+  "homepage": "https://github.com/chahat885/B-D-App#readme",
+  "dependencies": {
+    "react-toastify": "^11.0.5"
+  }
 }
