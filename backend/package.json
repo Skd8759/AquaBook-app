@@ -23,6 +23,7 @@
     "mime-types": "^2.1.35",
     "mongoose": "^8.18.0",
     "morgan": "^1.10.1",
+    "nitk-swimming-pool-app": "file:..",
     "nodemailer": "^7.0.6"
   },
   "devDependencies": {

@@ -125,7 +125,7 @@ const CalendarPage = () => {
   }, [slots, selectedDate]);
 
   return (
-    <div className="min-h-full bg-gradient-to-br from-[#f9fafb] via-[#eff6ff] to-[#e0e7ff] p-6 page-transition">
+    <div className="min-h-full bg-gradient-to-br from-[#f9fafb] via-[#eff6ff] to-[#e0e7ff] dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 p-6 page-transition">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Enhanced Header */}
         <motion.div 
@@ -134,16 +134,16 @@ const CalendarPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-full mb-4 shadow-lg">
             <Trophy className="w-10 h-10 text-white" />
           </div>
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text text-transparent mb-6 pb-2">
-  Court Booking Calendar
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 bg-clip-text text-transparent mb-6 pb-2">
+  Pool Booking Calendar
 </h1>
 
-          <p className="text-gray-600 text-xl max-w-2xl mx-auto leading-relaxed ">
-            Select a date and time slot to book your badminton court. 
-            <span className="text-orange-600 font-semibold"> Real-time availability</span> with instant booking confirmation.
+          <p className="text-gray-600 dark:text-gray-300 text-xl max-w-2xl mx-auto leading-relaxed ">
+            Select a date and time slot to book your swimming pool session. 
+            <span className="text-emerald-600 dark:text-emerald-400 font-semibold"> Real-time availability</span> with instant booking confirmation.
           </p>
         </motion.div>
 
@@ -177,9 +177,9 @@ const CalendarPage = () => {
                 onClick={() => setSelectedDate(date)}
                 className={`p-4 rounded-xl border-2 fast-hover transition-all duration-300 ${
                   selectedDate.toDateString() === date.toDateString()
-                    ? 'border-orange-500 bg-gradient-to-br from-orange-50 to-red-50 text-orange-700 shadow-lg scale-105'
-                    : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50 hover:shadow-md'
-                } ${isToday(date) ? 'ring-2 ring-orange-300 shadow-lg' : ''}`}
+                    ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-cyan-50 text-emerald-700 shadow-lg scale-105'
+                    : 'border-gray-200 dark:border-gray-700 hover:border-emerald-300 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:shadow-md'
+                } ${isToday(date) ? 'ring-2 ring-emerald-300 shadow-lg' : ''}`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -187,15 +187,15 @@ const CalendarPage = () => {
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <div className="text-center">
-                  <div className="text-sm font-semibold text-gray-600 mb-1">
+                  <div className="text-sm font-semibold text-gray-600 dark:text-gray-300 mb-1">
                     {date.toLocaleDateString('en-US', { weekday: 'short' })}
                   </div>
                   <div className={`text-3xl font-bold mb-1 ${
-                    isToday(date) ? 'text-orange-600' : 'text-gray-800'
+                    isToday(date) ? 'text-emerald-600' : 'text-gray-800 dark:text-gray-100'
                   }`}>
                     {date.getDate()}
                   </div>
-                  <div className="text-xs text-gray-500 font-medium">
+                  <div className="text-xs text-gray-500 dark:text-gray-400 font-medium">
                     {date.toLocaleDateString('en-US', { month: 'short' })}
                   </div>
                 </div>
@@ -206,23 +206,23 @@ const CalendarPage = () => {
 
         {/* Enhanced Time Slots */}
         <motion.div 
-          className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 p-8"
+          className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl shadow-xl border border-gray-200/50 dark:border-gray-700 p-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">
                 Available Slots for {formatDate(selectedDate)}
               </h2>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 {filteredSlots.length} slot{filteredSlots.length !== 1 ? 's' : ''} available
               </p>
             </div>
             {loading && (
-              <div className="flex items-center space-x-3 text-orange-600 bg-orange-50 px-4 py-2 rounded-xl">
-                <div className="w-5 h-5 border-2 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
+              <div className="flex items-center space-x-3 text-emerald-600 bg-emerald-50 dark:text-emerald-300 dark:bg-emerald-900/20 px-4 py-2 rounded-xl">
+                <div className="w-5 h-5 border-2 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
                 <span className="font-medium">Loading...</span>
               </div>
             )}
@@ -230,17 +230,17 @@ const CalendarPage = () => {
 
           {loading ? (
             <div className="text-center py-16">
-              <div className="w-20 h-20 border-4 border-orange-200 border-t-orange-600 rounded-full animate-spin mx-auto mb-6"></div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">Loading Available Slots</h3>
-              <p className="text-gray-500">Please wait while we fetch the latest availability...</p>
+              <div className="w-20 h-20 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-6"></div>
+              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">Loading Available Slots</h3>
+              <p className="text-gray-500 dark:text-gray-400">Please wait while we fetch the latest availability...</p>
             </div>
           ) : slots.length === 0 ? (
             <div className="text-center py-16">
-              <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Trophy className="w-10 h-10 text-gray-400" />
+              <div className="w-20 h-20 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Trophy className="w-10 h-10 text-gray-400 dark:text-gray-300" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">No Slots Available</h3>
-              <p className="text-gray-500">No court slots have been created for this date yet.</p>
+              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">No Slots Available</h3>
+              <p className="text-gray-500 dark:text-gray-400">No pool slots have been created for this date yet.</p>
             </div>
           ) : (
             <div className="space-y-6 max-h-[70vh] scroll-container">

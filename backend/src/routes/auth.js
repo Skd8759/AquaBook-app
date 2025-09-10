@@ -91,19 +91,26 @@ router.post(
       return true;
     }),
     body('password').isLength({ min: 6 }),
-    body('role').optional().isIn(['student', 'admin'])
+    body('role').optional().isIn(['student', 'admin']),
+    body('gender').isIn(['male','female'])
   ],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
     
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, gender } = req.body;
+    // Debug minimal log to verify payload contains gender
+    try { console.log('Register payload (sanitized):', { email, role, gender }); } catch {}
+    const normalizedGender = typeof gender === 'string' ? gender.toLowerCase().trim() : '';
+    if (!normalizedGender || !['male','female'].includes(normalizedGender)) {
+      return res.status(400).json({ error: 'Gender is required and must be male or female' });
+    }
     
     try {
       const existing = await User.findOne({ email });
       if (existing) return res.status(409).json({ error: 'Email already in use' });
       
-      const user = new User({ name, email, role: role || 'student' });
+      const user = new User({ name, email, role: role || 'student', gender: normalizedGender });
       await user.setPassword(password);
       
       // Generate and send OTP
@@ -121,6 +128,9 @@ router.post(
       });
     } catch (error) {
       console.error('Registration error:', error);
+      if (error.name === 'ValidationError') {
+        return res.status(400).json({ error: error.message });
+      }
       return res.status(500).json({ error: 'Registration failed' });
     }
   }
@@ -158,7 +168,8 @@ router.post(
           id: user._id, 
           role: user.role, 
           name: user.name, 
-          email: user.email 
+          email: user.email,
+          gender: user.gender
         } 
       });
     } catch (error) {

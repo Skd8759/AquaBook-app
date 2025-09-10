@@ -17,7 +17,8 @@ const LoginPage = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'student'
+    role: 'student',
+    gender: 'male'
   });
   const [otp, setOtp] = useState('');
 
@@ -57,7 +58,8 @@ const LoginPage = () => {
         name: formData.name,
         email: formData.email,
         password: formData.password,
-        role: formData.role
+        role: formData.role,
+        gender: formData.gender
       });
 
       showMessage('success', response.data.message);
@@ -129,7 +131,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-950 via-sky-900 to-slate-900 p-4">
       {/* Back Button */}
       <motion.button
         onClick={() => navigate('/')}
@@ -155,13 +157,13 @@ const LoginPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            <div className="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <Trophy className="w-10 h-10 text-white" />
             </div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-orange-400 via-red-500 to-pink-500 bg-clip-text text-transparent">
-              NITK Courts
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
+              NITK Swimming Pool
             </h1>
-            <p className="text-white/80 mt-2">Book your badminton court with ease</p>
+            <p className="text-white/80 mt-2">Book your swimming pool slot with ease</p>
           </motion.div>
 
           {/* Message Display */}
@@ -170,8 +172,8 @@ const LoginPage = () => {
               <motion.div
                 className={`p-4 rounded-lg mb-6 flex items-center space-x-2 ${
                   message.type === 'success' 
-                    ? 'bg-green-500/20 text-green-300 border border-green-500/30' 
-                    : 'bg-red-500/20 text-red-300 border border-red-500/30'
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
+                    : 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30'
                 }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -198,7 +200,7 @@ const LoginPage = () => {
             <div className="flex bg-white/10 rounded-lg p-1 mb-6">
               <motion.button
                 className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${
-                  isLogin ? 'bg-orange-500 text-white shadow-sm' : 'text-white/70 hover:text-white'
+                  isLogin ? 'bg-emerald-500 text-white shadow-sm' : 'text-white/70 hover:text-white'
                 }`}
                 onClick={() => {
                   setIsLogin(true);
@@ -212,7 +214,7 @@ const LoginPage = () => {
               </motion.button>
               <motion.button
                 className={`flex-1 py-2 px-4 rounded-md font-medium transition-all ${
-                  !isLogin ? 'bg-orange-500 text-white shadow-sm' : 'text-white/70 hover:text-white'
+                  !isLogin ? 'bg-emerald-500 text-white shadow-sm' : 'text-white/70 hover:text-white'
                 }`}
                 onClick={() => {
                   setIsLogin(false);
@@ -262,7 +264,7 @@ const LoginPage = () => {
 
                   <motion.button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -274,7 +276,7 @@ const LoginPage = () => {
                     <button
                       type="button"
                       onClick={handleResendOTP}
-                      className="text-sm text-orange-400 hover:text-orange-300 font-medium"
+                      className="text-sm text-emerald-300 hover:text-emerald-200 font-medium"
                       disabled={loading}
                     >
                       Didn't receive? Resend OTP
@@ -328,7 +330,7 @@ const LoginPage = () => {
 
                   <motion.button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -437,9 +439,25 @@ const LoginPage = () => {
                     </select>
                   </div>
 
+                  <div>
+                    <label className="block text-sm font-medium text-white/90 mb-2">
+                      Gender
+                    </label>
+                    <select
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                      required
+                    >
+                      <option value="male" className="bg-gray-800 text-white">Male</option>
+                      <option value="female" className="bg-gray-800 text-white">Female</option>
+                    </select>
+                  </div>
+
                   <motion.button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-500 to-red-600 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-gradient-to-r from-emerald-500 to-cyan-600 text-white py-3 rounded-lg font-semibold hover:from-emerald-600 hover:to-cyan-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     disabled={loading}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}

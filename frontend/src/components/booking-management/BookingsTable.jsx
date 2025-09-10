@@ -27,9 +27,8 @@ const BookingsTable = ({ bookings, loading, onCancelBooking }) => {
           <tr className="border-b border-gray-200">
             <th className="text-left py-3 px-4 font-medium text-gray-700">User</th>
             <th className="text-left py-3 px-4 font-medium text-gray-700">Date & Time</th>
-            <th className="text-left py-3 px-4 font-medium text-gray-700">Sub-court</th>
-            <th className="text-left py-3 px-4 font-medium text-gray-700">Game Mode</th>
-            <th className="text-left py-3 px-4 font-medium text-gray-700">Players</th>
+            <th className="text-left py-3 px-4 font-medium text-gray-700">Gender Session</th>
+            <th className="text-left py-3 px-4 font-medium text-gray-700">Capacity</th>
             <th className="text-left py-3 px-4 font-medium text-gray-700">Booked At</th>
             <th className="text-left py-3 px-4 font-medium text-gray-700">Actions</th>
           </tr>
@@ -68,23 +67,14 @@ const BookingsTable = ({ bookings, loading, onCancelBooking }) => {
                 </div>
               </td>
               <td className="py-3 px-4">
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  Court {booking.subCourtIndex + 1}
-                </span>
-              </td>
-              <td className="py-3 px-4">
-                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  booking.gameMode === 'singles' 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-purple-100 text-purple-800'
-                }`}>
-                  {booking.gameMode.charAt(0).toUpperCase() + booking.gameMode.slice(1)}
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 capitalize">
+                  {booking.slot.gender}
                 </span>
               </td>
               <td className="py-3 px-4">
                 <div className="flex items-center space-x-1">
                   <Users className="w-4 h-4 text-gray-400" />
-                  <span className="text-sm font-medium">{booking.playersCount}</span>
+                  <span className="text-sm font-medium">{booking.slot.capacity}</span>
                 </div>
               </td>
               <td className="py-3 px-4 text-sm text-gray-500">

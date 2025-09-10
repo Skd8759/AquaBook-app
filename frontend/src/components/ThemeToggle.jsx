@@ -8,7 +8,7 @@ const ThemeToggle = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative w-12 h-6 bg-gray-200 dark:bg-gray-700 rounded-full p-1 transition-colors duration-300"
+      className="relative w-12 h-6 bg-blue-200 dark:bg-slate-700 rounded-full p-1 transition-colors duration-300"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label="Toggle theme"
@@ -21,9 +21,9 @@ const ThemeToggle = () => {
         transition={{ type: "spring", stiffness: 500, damping: 30 }}
       >
         {isDark ? (
-          <Moon className="w-3 h-3 text-gray-800" />
+          <Moon className="w-3 h-3 text-slate-100" />
         ) : (
-          <Sun className="w-3 h-3 text-yellow-500" />
+          <Sun className="w-3 h-3 text-amber-500" />
         )}
       </motion.div>
     </motion.button>

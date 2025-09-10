@@ -92,15 +92,15 @@ const MyBookingsPage = () => {
   }, []);
 
   return (
-    <div className="min-h-full bg-gradient-to-br from-[#f9fafb] via-[#eff6ff] to-[#e0e7ff] p-6 page-transition">
+    <div className="min-h-full bg-gradient-to-br from-[#f9fafb] via-[#eff6ff] to-[#e0e7ff] dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 p-6 page-transition">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent mb-2">
             My Bookings
           </h1>
-          <p className="text-gray-600 text-lg">
-            View and manage your badminton court bookings
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
+            View and manage your swimming pool bookings
           </p>
         </div>
 
@@ -134,10 +134,10 @@ const MyBookingsPage = () => {
             </div>
           ) : bookings.length === 0 ? (
             <div className="text-center py-12">
-              <Calendar className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">No Bookings Yet</h3>
-              <p className="text-gray-500">You haven't made any court bookings yet.</p>
-              <p className="text-gray-500">Go to the calendar to book your first slot!</p>
+              <Calendar className="w-16 h-16 text-gray-300 dark:text-gray-500 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-2">No Bookings Yet</h3>
+              <p className="text-gray-500 dark:text-gray-400">You haven't made any pool bookings yet.</p>
+              <p className="text-gray-500 dark:text-gray-400">Go to the calendar to book your first slot!</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -167,13 +167,13 @@ const MyBookingsPage = () => {
                         <h3 className="text-lg font-semibold text-gray-800">
                           {formatDate(booking.slot.startTime)}
                         </h3>
-                        <div className="flex items-center space-x-4 text-sm text-gray-600">
+                        <div className="flex items-center space-x-4 text-sm text-gray-600 dark:text-gray-300">
                           <div className="flex items-center space-x-1">
                             <Clock className="w-4 h-4" />
                             <span>{formatTime(booking.slot.startTime)} - {formatTime(booking.slot.endTime)}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <span>Court {booking.subCourtIndex + 1}</span>
+                            <span className="capitalize">{booking.slot.gender} session</span>
                           </div>
                         </div>
                       </div>

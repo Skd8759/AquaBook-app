@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Users, Droplets } from "lucide-react";
 
-const CourtGrid = ({ slot, onSlotClick }) => {
+const PoolGrid = ({ slot, onSlotClick }) => {
   // Format time with AM/PM for morning, 24-hour + PM for evening
   const formatTime = (dateString) => {
     const date = new Date(dateString);
@@ -22,13 +22,13 @@ const CourtGrid = ({ slot, onSlotClick }) => {
 
   // Get gender-specific styling
   const getGenderColor = (gender) => {
-    return gender === "boys"
+    return gender === "male"
       ? "from-emerald-500 to-teal-500"
       : "from-rose-500 to-pink-500";
   };
 
   const getGenderIcon = (gender) => {
-    return gender === "boys" ? "♂" : "♀";
+    return gender === "male" ? "♂" : "♀";
   };
 
   // Get capacity status for swimming pool
@@ -87,7 +87,7 @@ const CourtGrid = ({ slot, onSlotClick }) => {
               </span>
             </h3>
             <p className="text-sm text-gray-700 font-medium">
-              Swimming Pool - {slot.gender === "boys" ? "Boys" : "Girls"} Only
+              Swimming Pool - {slot.gender === "male" ? "Male" : "Female"} Only
             </p>
           </div>
         </div>
@@ -116,7 +116,7 @@ const CourtGrid = ({ slot, onSlotClick }) => {
             </div>
             <div>
               <h4 className="text-xl font-bold text-gray-800">
-                {slot.gender === "boys" ? "Boys" : "Girls"} Swimming Pool
+                {slot.gender === "male" ? "Male" : "Female"} Swimming Pool
               </h4>
               <p className="text-sm text-gray-700 font-medium">
                 30-minute swimming sessions
@@ -160,4 +160,4 @@ const CourtGrid = ({ slot, onSlotClick }) => {
   );
 };
 
-export default CourtGrid;
+export default PoolGrid;
