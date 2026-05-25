@@ -226,7 +226,7 @@ const MyBookingsPage = () => {
                         <span className="ml-2 text-gray-600">{booking.playersCount}</span>
                       </div>
                       <div>
-                        <span className="font-medium text-gray-700">Court Type:</span>
+                        <span className="font-medium text-gray-700">Pool Type:</span>
                         <span className="ml-2 text-gray-600 capitalize">{booking.gameMode}</span>
                       </div>
                       <div>
@@ -278,7 +278,7 @@ const MyBookingsPage = () => {
               <h3 className="text-2xl font-bold text-gray-800">
                 {bookings.reduce((sum, b) => sum + b.playersCount, 0)}
               </h3>
-              <p className="text-gray-600">Total Players Booked</p>
+              <p className="text-gray-600">Total Swimmer Booked</p>
             </div>
           </div>
         )}

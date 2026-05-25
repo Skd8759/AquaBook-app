@@ -17,7 +17,6 @@ function auth(requiredRole = null) {
     }
   };
 }
-
 export { auth };
 
 

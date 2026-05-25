@@ -9,7 +9,7 @@ console.log('Email credentials check:', {
 
 // Create transporter
 const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+    host: 'smtp.gmail.com',   // ✅ FIXED
     port: 465,       // SSL port
     secure: true,    // must be true for port 465
     auth: {
@@ -31,10 +31,10 @@ export const sendOTPEmail = async (email, otp, name) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
-    subject: 'NITK Badminton Court Booking - Email Verification OTP',
-    html: `
+    subject: 'NITK Swimming Booking - Email Verification OTP',
+    html: `   <!-- ✅ FIXED (wrapped with backticks) -->
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <h2 style="color: #2c3e50;">NITK Badminton Court Booking</h2>
+        <h2 style="color: #2c3e50;">NITK Swimming Pool Booking</h2>
         <p>Hello ${name},</p>
         <p>Your email verification OTP is:</p>
         <div style="background-color: #ecf0f1; padding: 20px; text-align: center; margin: 20px 0;">
@@ -43,7 +43,7 @@ export const sendOTPEmail = async (email, otp, name) => {
         <p>This OTP will expire in 10 minutes.</p>
         <p>If you didn't request this, please ignore this email.</p>
         <hr style="margin: 20px 0;">
-        <p style="color: #7f8c8d; font-size: 12px;">NITK Badminton Court Booking System</p>
+        <p style="color: #7f8c8d; font-size: 12px;">NITK Swimming Pool Booking System</p>
       </div>
     `
   };

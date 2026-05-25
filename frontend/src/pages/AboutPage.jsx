@@ -234,7 +234,7 @@ const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1.5 }}
           >
-            <h2 className="text-3xl font-bold text-white mb-6">Meet the Founder</h2>
+            <h2 className="text-3xl font-bold text-white mb-6">Meet the Developer</h2>
             <div className="flex flex-col items-center">
               {/* Placeholder for the founder's photo */}
               <img

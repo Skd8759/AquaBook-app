@@ -15,7 +15,7 @@ const AdminPage = () => {
             Admin Dashboard
           </h1>
           <p className="text-gray-600 text-lg">
-            Manage badminton court slots and bookings
+            Manage swimming pool slots and bookings
           </p>
         </div>
 
